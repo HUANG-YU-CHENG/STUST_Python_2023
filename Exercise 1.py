@@ -2,4 +2,4 @@
 def Profile(name,age):
     print(name,age)
 #call function
-Profile("Agany","20")
+Profile("Agany","20")AAA
