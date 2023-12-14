@@ -1,24 +1,25 @@
 class student:
     def __init__(self,name,student_ID):
         self.course = []
-        self._name = name
-        self._student_ID = student_ID
-    @property
+        self.name = name
+        self.student_ID = student_ID
     def student_course(self):
         return self.course
-    @student_course.setter
+    
     def add_course(self,new_course):
-        self.course.append(new_course)
-    @student_course.deleter
+        self.course.extend(new_course)
+        
     def withdraw_course(self,del_course):
-        del self.course[del_course]
+        if del_course in self.course:
+            self.course.remove(del_course)
+        else:
+            print(f"{del_course}課程並不存在於你選課中")
     def print_data(self):
-        print(f"{self._name}目前選到的課程有{self.course}")
+        print(f"{self.name}目前選到的課程有{self.course}")
 def main():
     obj1 = student("huang","4b0g0109")
-    obj1.course = ["test","test2","test3"]
-    obj1.course.append("obj3") 
-    del obj1.course[1]
+    obj1.add_course(["test1","test2","test3"])
+    obj1.withdraw_course("test2")
     obj1.print_data()
 if __name__ == '__main__':
     main()       
